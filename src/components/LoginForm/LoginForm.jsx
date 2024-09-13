@@ -1,6 +1,6 @@
 import { Field, Form, Formik } from "formik";
 import * as Yup from 'yup';
-import css from './RegistrationForm.module.css';
+import css from './LoginForm.module.css';
 import { useDispatch, useSelector } from "react-redux";
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import { selectAuthError } from '../../redux/auth/selectors';
