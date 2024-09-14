@@ -1,20 +1,19 @@
-import { Field, Form, Formik } from "formik";
+import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from 'yup';
 import css from './LoginForm.module.css';
 import { useDispatch, useSelector } from "react-redux";
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import { selectAuthError } from '../../redux/auth/selectors';
-import { apiLogin } from "../../redux/auth/operations";
+import { apiLogin } from '../../redux/auth/operations';
 
 const validationParams = Yup.object().shape({
     password: Yup.string()
-      .min(8, "Too Short!")
-      .max(50, "Too Long!")
-        .required("Required"),
+        .min(8, "Too Short!")
+        .max(50, "Too Long!")
+        .required("Password is required"),
     email: Yup.string()
         .email('Enter a valid email!')
         .required('Email is required'),
-    });
+});
 
 function LoginForm() {
     const dispatch = useDispatch();
@@ -27,6 +26,7 @@ function LoginForm() {
 
     const handleSubmit = (values, actions) => {
         dispatch(apiLogin(values));
+        actions.setSubmitting(false);  
         actions.resetForm();
     };
 
@@ -36,43 +36,57 @@ function LoginForm() {
             onSubmit={handleSubmit}
             validationSchema={validationParams}
         >
-            <Form className={css.formContainer}>
-                <label className={css.container}>
-                    <span className={css.label}>Email</span>
-                    <Field
-                        className={css.input}
-                        type="text"
-                        name="email"
-                    />
-                    <ErrorMessage
-                        className={css.errorMessage}
-                        name="email"
-                        component="span"
-                    />
-                </label>
+            {({ isSubmitting }) => (
+                <Form className={css.formContainer}>
+          
+                    <label className={css.container}>
+                        <span className={css.label}>Email</span>
+                        <Field
+                            className={css.input}
+                            type="text"
+                            name="email"
+                            placeholder='your@email.com'
+                        />
+                  
+                        <ErrorMessage
+                            className={css.errorMessage}
+                            name="email"
+                            component="span"
+                            placeholder='eXamplepswrd016$'
+                        />
+                    </label>
 
-                <label className={css.container}>
-                    <span className={css.label}>Password</span>
-                    <Field
-                        className={css.input}
-                        type="password"
-                        name="password"
-                    />
-                    <ErrorMessage
-                        className={css.errorMessage}
-                        name="password"
-                        component="span"
-                    />
-                </label>
+             
+                    <label className={css.container}>
+                        <span className={css.label}>Password</span>
+                        <Field
+                            className={css.input}
+                            type="password"
+                            name="password"
+                        />
+                      
+                        <ErrorMessage
+                            className={css.errorMessage}
+                            name="password"
+                            component="span"
+                        />
+                    </label>
 
-                <button className={css.logInBtn} type="submit">
-                    Log in
-                </button>
-                {error && <ErrorMessage />}
-            </Form>
+                  
+                    {error && (
+                        <div className={css.generalError}>
+                            Something went wrong. Please try again later!
+                        </div>
+                    )}
+
+                    
+                    <button className={css.logInBtn} type="submit" disabled={isSubmitting}>
+                        {isSubmitting ? "Logging in..." : "Log in"}
+                    </button>
+                </Form>
+            )}
         </Formik>
     );
-
 }
-    
+
 export default LoginForm;

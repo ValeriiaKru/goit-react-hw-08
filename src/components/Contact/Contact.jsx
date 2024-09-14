@@ -10,18 +10,18 @@ function Contact({ id, name, number }) {
     const dispatch = useDispatch();
     const handleDelete = (id) => {
         dispatch(deleteContact(id));
-        toast.success('Your contact deleted🗑️');
+        toast.success('Your contact has been deleted🗑️');
     };
 
     return (
         <li className={css.contactList}>
             <div className={css.contactContainer}>
                 <FaUser />
-                <p>{name}</p>
+                <p className={css.contactName}>{name}</p>
             </div>
             <div className={css.contactContainer}>
                 <FaPhoneAlt />
-                <p>{number}</p>
+                <p className={css.contactName}>{number}</p>
             </div>
             <button
             className={css.deleteBtn}

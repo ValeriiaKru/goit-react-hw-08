@@ -1,0 +1,26 @@
+
+.headerNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #978AE8;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    color: black;
+}
+
+.headerNav a {
+    color: black;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.headerNav a:hover,
+.headerNav a:focus-visible,
+.headerNav a:active
+ {
+    color:#47da95;
+}
+

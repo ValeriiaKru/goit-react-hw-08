@@ -1,4 +1,5 @@
 .searchContainer {
+  margin-top: 12px;
     display: flex;
   flex-direction: column;
   gap: 12px;
@@ -6,14 +7,23 @@
 }
 
 .label {
-font-size: 18px;
+font-size: 22px;
+text-decoration:underline;
+text-decoration-color:#E8004F;
+color: black;
+font-weight: 500;
 }
 
 .searchBarInput {
+  margin-left: 12px;
     width: 400px;
   padding: 12px;
   font-size: 18px;
   border: 1px solid gray;
   border-radius: 8px;
   outline: none;
+}
+
+.searchBarInput::placeholder {
+  color: rgb(198, 197, 197);
 }

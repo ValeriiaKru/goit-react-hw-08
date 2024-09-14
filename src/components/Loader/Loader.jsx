@@ -1,19 +1,15 @@
 
-import { Watch } from 'react-loader-spinner';
+import { FallingLines } from 'react-loader-spinner';
 
 const Loader = () => {
     return (
         <div>
-            <Watch
-            visible={true}
-            height="50"
-            width="50"
-            radius="48"
-            color="#F289ED"
-            ariaLabel="watch-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-        />
+            <FallingLines
+  color="#53FFB0"
+  width="70"
+  visible={true}
+  ariaLabel="falling-circles-loading"
+  />
         </div>
 
     );

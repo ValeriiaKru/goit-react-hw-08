@@ -30,7 +30,7 @@ function ContactForm() {
     };
     
     return (
-        <div>
+        <div className={css.contactContainer}>
         <Formik
             initialValues={initialValues}
             onSubmit={handleSubmit}

@@ -1,9 +1,10 @@
 .formContainer {
-    border: 1px solid black;
-    border-radius: 8px;
-    padding: 36px;
-    max-width: 400px;
-    margin-bottom: 24px;
+    border: 1px solid rgb(136, 135, 135);
+        border-radius: 8px;
+        padding: 36px;
+        width: 30%;
+        margin: 0 auto;
+        margin-top: 24px;
 }
 
 .container {
@@ -14,6 +15,7 @@
 }
 
 .label {
+    color: black;
     font-size: 18px;
     font-weight: 500;
 }
@@ -34,5 +36,15 @@
 .logInBtn {
     display: block;
     margin: 0 auto;
-    border: 1px solid grey;
+    transition: background-color 0.3s;
+}
+
+.logInBtn:hover,
+.logInBtn:focus-visible,
+.logInBtn:active {
+    background-color: #5ee0a4;
+}
+
+.input::placeholder {
+    color: rgb(198, 197, 197);
 }
